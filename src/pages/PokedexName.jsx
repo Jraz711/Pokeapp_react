@@ -7,7 +7,7 @@ const PokedexName = () => {
   const { name } = useParams()
 
   const url = `https://pokeapi.co/api/v2/pokemon/${name}`
-  const [pokemon, getPokemonByName,] = useFetch(url)
+  const [pokemon, getPokemonByName, hasError] = useFetch(url)
 
   useEffect(() => {
     getPokemonByName()
@@ -17,8 +17,16 @@ const PokedexName = () => {
 
   return (
     <div>
-      <img src={pokemon?.sprites.other['official-artwork'].front_default} alt=" " />
-      <h2>{pokemon?.name}</h2>
+      {
+        hasError
+          ? <h1>❌ The pokemon "<span>{name}</span>" doesn't exist </h1>
+          : (
+            <>
+              <img src={pokemon?.sprites.other['official-artwork'].front_default} alt=" " />
+              <h2>{pokemon?.name}</h2>
+            </>
+          )
+      }
     </div>
   )
 }

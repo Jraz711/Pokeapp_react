@@ -4,7 +4,8 @@ import { useState } from "react"
 const useFetch = (url) => {
 
   const [infoApi, setinfoApi] = useState()
-  const [hashError, sethashError] = useState(false)
+  const [hasError, sethashError] = useState(false)
+
   const getApi = () => {
     axios.get(url)
       .then(res => {
@@ -16,7 +17,7 @@ const useFetch = (url) => {
       })
   }
 
-  return [infoApi, getApi, hashError]
+  return [infoApi, getApi, hasError, setinfoApi]
 }
 
 export default useFetch
