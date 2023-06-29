@@ -7,7 +7,7 @@ const PokedexName = () => {
   const { name } = useParams()
 
   const url = `https://pokeapi.co/api/v2/pokemon/${name}`
-  const [pokemon, getPokemonByName, hashError] = useFetch(url)
+  const [pokemon, getPokemonByName,] = useFetch(url)
 
   useEffect(() => {
     getPokemonByName()
@@ -17,18 +17,8 @@ const PokedexName = () => {
 
   return (
     <div>
-      {
-        hashError
-          ? <h1><span>{name}</span> not exits</h1>
-          : (
-            <>
-              <img src={pokemon.sprites.other['official-artwork'].front_default}
-                alt=" "
-              />
-              <h2>{pokemon?.name}</h2>
-            </>
-          )
-      }
+      <img src={pokemon?.sprites.other['official-artwork'].front_default} alt=" " />
+      <h2>{pokemon?.name}</h2>
     </div>
   )
 }

@@ -6,14 +6,10 @@ import useFetch from "../hooks/useFetch"
 
 const Pokedex = () => {
 
-
-
   const trainerName = useSelector(states => states.trainerName)
 
   const url = 'https://pokeapi.co/api/v2/pokemon?limit=20&offset=0'
   const [pokemons, getAllPokemon] = useFetch(url)
-
-
 
   useEffect(() => {
     getAllPokemon()
@@ -32,7 +28,10 @@ const Pokedex = () => {
 
   return (
     <div>
-      <p> Welcome <span>{trainerName}</span>!, Find Your Favorite Pokemon</p>
+      {/* <header>
+        <img src="" alt="" />
+      </header> */}
+      <p> <span> Welcome{trainerName}</span>!, Find Your Favorite Pokemon</p>
       <form onSubmit={handleSubmit}>
         <input ref={searchPokemon} type="text" placeholder="Search your favorite pokemon" />
         <button>Search</button>

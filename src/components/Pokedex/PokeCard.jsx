@@ -10,7 +10,7 @@ const PokeCard = ({ url }) => {
     getPokemonById()
   }, [])
 
-  console.log(pokemon);
+
 
   const navigate = useNavigate()
 
@@ -18,7 +18,7 @@ const PokeCard = ({ url }) => {
     navigate(`/pokedex/${pokemon.name}`)
   }
   return (
-    <article onClick={handleNavigate} style={{ border: '1px solid black' }}>
+    <article onClick={handleNavigate} style={{ border: '5px solid black' }}>
       <header>
         <img src={pokemon?.sprites.other['official-artwork'].front_default} alt='' />
       </header>
@@ -38,7 +38,7 @@ const PokeCard = ({ url }) => {
             pokemon?.stats.map(statInfo => (
               <li key={statInfo.stat.url}>
                 <span >{statInfo.stat.name}: </span>
-                <span >{statInfo.base_stat}: </span>
+                <span >{statInfo.base_stat} </span>
               </li>
             ))
           }

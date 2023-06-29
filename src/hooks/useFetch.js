@@ -1,7 +1,6 @@
 import axios from "axios"
 import { useState } from "react"
 
-
 const useFetch = (url) => {
 
   const [infoApi, setinfoApi] = useState()

@@ -2,7 +2,6 @@ import PokeCard from "./PokeCard";
 
 const PokeContainer = ({ pokemons }) => {
 
-  console.log(pokemons);
 
   return (
     <div>
