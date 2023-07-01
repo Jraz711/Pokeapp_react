@@ -4,6 +4,7 @@ import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import PokeContainer from "../components/Pokedex/PokeContainer"
 import useFetch from "../hooks/useFetch"
+import './styles/pokedex.css'
 
 
 const Pokedex = () => {
@@ -11,8 +12,6 @@ const Pokedex = () => {
   const [selectValue, setselectValue] = useState('all-pokemons')
 
   const trainerName = useSelector(states => states.trainerName)
-
-
 
   let url = 'https://pokeapi.co/api/v2/pokemon?limit=20&offset=0'
   const [pokemons, getAllPokemon, hasError, setPokemons] = useFetch(url)
@@ -58,29 +57,32 @@ const Pokedex = () => {
   }
 
   return (
-    <div>
-      {/* <header>
-        <img src="" alt="" />
-      </header> */}
-      <p> <span> Welcome{trainerName}</span>!, Find Your Favorite Pokemon</p>
-      <form onSubmit={handleSubmit}>
-        <input ref={searchPokemon} type="text" placeholder="Search your favorite pokemon" />
-        <button>Search</button>
-      </form>
-      <form>
-
-      </form>
-      <select onChange={handleChangeType}>
-        <option value='all-pokemons'>All Pokemons</option>
-        {
-          types?.results.map(typeInfo => (
-            <option
-              value={typeInfo.url}
-              key={typeInfo.url}
-            >{typeInfo.name}</option>
-          ))
-        }
-      </select>
+    <div className="pokedex">
+      <header className="pokedex_header">
+        <img className='pokedex_header-img' src="./src/assets/images/headerpokedex.svg" alt="" />
+        <img className='pokedex_header-logo' src="./src/assets/images/logopokedex.svg" alt="" />
+        <img className='pokedex_header-pokebola' src="./src/assets/images/pokebola.svg" alt="" />
+      </header>
+      <div className="pokedex_body">
+        <p className="pokedex_body-p"> <span className="pokedex_body-span">Bienvenido {trainerName},</span> aquí podrás encontrar tu pokemón favorito</p>
+        <div className="pokedex_body-form">
+          <form className="form" onSubmit={handleSubmit}>
+            <input className="pokedex_form-input" ref={searchPokemon} type="text" placeholder="Buscar un pokemon" />
+            <button className="pokedex_form-btn">Buscar</button>
+          </form>
+          <select className="pokedex_select" onChange={handleChangeType}>
+            <option value='all-pokemons'>Todos los pokemones</option>
+            {
+              types?.results.map(typeInfo => (
+                <option className="pokedex_option-types"
+                  value={typeInfo.url}
+                  key={typeInfo.url}
+                >{typeInfo.name}</option>
+              ))
+            }
+          </select>
+        </div>
+      </div>
       <PokeContainer pokemons={pokemons?.results} />
     </div>
   )

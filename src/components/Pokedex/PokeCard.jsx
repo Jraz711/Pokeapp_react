@@ -1,7 +1,8 @@
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import useFetch from "../../hooks/useFetch"
-import './styles/Pokecard.css'
+import '../styles/pokedex/Pokecard.css'
+
 
 const PokeCard = ({ url }) => {
 
@@ -20,24 +21,26 @@ const PokeCard = ({ url }) => {
   }
   return (
     <article className={`pokecard ${pokemon?.types[0].type.name}`} onClick={handleNavigate} >
-      <header className={`pokecard_header bg-${pokemon?.types[0].type.name}`}>
-        <img
-          className="pokecard_img"
-          src={pokemon?.sprites.other['official-artwork'].front_default} alt='' />
-      </header>
-      <section className="pokecard_body">
-        <h3 className="pokecard_name">{pokemon?.name}</h3>
-        <ul className="pokecard_types">
-          {
-            pokemon?.types.map(typeInfo => (
-              <li
-                className="pokecard_types-item"
-                key={typeInfo.type.url}
-              >{typeInfo.type.name}</li>
-            ))
-          }
-        </ul>
-      </section>
+      <div className="pokecard_container">
+        <header className={`pokecard_header bg-${pokemon?.types[0].type.name}`}>
+          <img
+            className="pokecard_img"
+            src={pokemon?.sprites.other['official-artwork'].front_default} alt='' />
+        </header>
+        <section className="pokecard_body">
+          <h3 className="pokecard_name">{pokemon?.name}</h3>
+          <ul className="pokecard_types">
+            {
+              pokemon?.types.map(typeInfo => (
+                <li
+                  className="pokecard_types-item"
+                  key={typeInfo.type.url}
+                >{typeInfo.type.name}</li>
+              ))
+            }
+          </ul>
+        </section>
+      </div>
       <footer className="pokecard_footer">
         <ul className="pokecard_stats">
           {
