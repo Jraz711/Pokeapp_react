@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import useFetch from "../hooks/useFetch"
 import './styles/pokedexName.css'
 
@@ -10,6 +10,13 @@ const PokedexName = () => {
   const url = `https://pokeapi.co/api/v2/pokemon/${name}`
   const [pokemon, getPokemonByName, hasError] = useFetch(url)
 
+  const navigate = useNavigate()
+
+  const handleNavigatePokedex = e => {
+    e.preventDefault()
+    navigate('/pokedex')
+  }
+
   useEffect(() => {
     getPokemonByName()
   }, [name])
@@ -19,7 +26,7 @@ const PokedexName = () => {
       <div className="pokedexName">
         <header className="pokedex_header">
           <img className='pokedex_header-img' src="./src/assets/images/headerpokedex.svg" alt="" />
-          <img className='pokedex_header-logo' src="./src/assets/images/logopokedex.svg" alt="" />
+          <img onClick={handleNavigatePokedex} className='pokedex_header-logo' src="./src/assets/images/logopokedex.svg" alt="" />
           <img className='pokedex_header-pokebola' src="./src/assets/images/pokebola.svg" alt="" />
         </header>
         <div className={`pokedexName_body ${pokemon?.types[0].type.name}`}>
