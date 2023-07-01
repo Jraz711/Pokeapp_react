@@ -1,15 +1,15 @@
 import { useRef } from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import icon from "../assets/images/group-217.svg"
+import footer_img from "../assets/images/footerpokedex.svg"
 import title_pokedex from "../assets/images/pokedex.png"
-import "../components/styles/home.css"
 import { setTrainerNameGlobal } from "../store/slices/trainerName.slice"
+import "./styles/home.css"
 
 const Home = () => {
 
   const trainerNameValue = useRef()
-  // const trainerName = useSelector(states => states.trainerName)
+
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -24,15 +24,23 @@ const Home = () => {
 
   return (
     <div className="home">
-      <img className="img-title_home" src={title_pokedex} alt="" />
-      <h2 >Hi Trainer !</h2>
-      <p>To Start in this application, please, give me your trainer name.</p>
-      <form onSubmit={handleSubmit}>
-        <input className="home-input" ref={trainerNameValue} type="text" placeholder="Your Name" />
-        <button className="home-button">Catch them all</button>
-      </form>
-      <footer className="footer-home">
-        <img src={icon} alt="" />
+      <header className="home_header">
+        <div>
+          <img className="home_header-img" src={title_pokedex} alt="" />
+        </div>
+      </header>
+      <section className="home_section">
+        <h2 className="home_title"> ! Hola Entrenador !</h2>
+        <p className="home_subtitle">Para poder comenzar, dame tu nombre</p>
+        <form onSubmit={handleSubmit}>
+          <input className="input_form" ref={trainerNameValue} type="text" placeholder="Tu Nombre... " />
+          <button className="home_btn">Comenzar</button>
+        </form>
+      </section>
+      <footer className="home_footer">
+        <div>
+          <img className="home_footer-img" src={footer_img} alt="" />
+        </div>
       </footer>
     </div>
   )
