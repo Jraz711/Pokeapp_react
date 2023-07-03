@@ -1,7 +1,6 @@
 import { useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import useFetch from "../hooks/useFetch"
-import './styles/pokedex.css'
 import './styles/pokedexName.css'
 
 const PokedexName = () => {
